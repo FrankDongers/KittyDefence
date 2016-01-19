@@ -64,9 +64,9 @@ class Spot(Widget):
 
 class MyApp(App):
 	def build(self):
-		game = BuildSpot()
+		game = KDGame()
 		Clock.schedule_interval(game.update,1.0/60.0)
-		return game.lol()
+		return game
 
 if __name__ == '__main__':
 	MyApp().run()
