@@ -6,6 +6,9 @@ from kivy.clock import Clock
 from kivy.properties import NumericProperty, ReferenceListProperty,\
     ObjectProperty
 from kivy.vector import Vector
+from kivy.uix.gridlayout import GridLayout
+from kivy.uix.button import Button
+
 #from kivy.core.window import Window
 
 class KDGame(Widget):
@@ -47,12 +50,23 @@ class Tower(Widget):
     def moveR(self):
 		self.pos = Vector(*self.velocity) + self.pos + Vector(10, 0)
 
+class BuildSpot(Widget):
+	layout = GridLayout(cols=2)
+	layout.add_widget(Button(text='World 1'))
+	layout.add_widget(Button(text='Hello 2'))
+	layout.add_widget(Button(text='World 2'))
+	def update(self, dt):
+		pass
+	def lol(self):
+		return self.layout
+class Spot(Widget):
+	pass
 
 class MyApp(App):
 	def build(self):
-		game = KDGame()
+		game = BuildSpot()
 		Clock.schedule_interval(game.update,1.0/60.0)
-		return game
+		return game.lol()
 
 if __name__ == '__main__':
 	MyApp().run()
