@@ -64,7 +64,7 @@ class Spot(Widget):
 
 class MyApp(App):
 	def build(self):
-		game = KDGame()
+		game= KDGame()
 		Clock.schedule_interval(game.update,1.0/60.0)
 		return game
 
