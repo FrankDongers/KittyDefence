@@ -6,11 +6,10 @@ from kivy.clock import Clock
 from kivy.properties import NumericProperty, ReferenceListProperty,\
     ObjectProperty
 from kivy.vector import Vector
-from kivy.core.window import Window
+#from kivy.core.window import Window
 
 class KDGame(Widget):
-	aTower = ObjectProperty(None)
-	def __init__(self, **kwargs):
+	"""def __init__(self, **kwargs):
 		super(KDGame, self).__init__(**kwargs)
 		self._keyboard = Window.request_keyboard(self._keyboard_closed, self)
 		self._keyboard.bind(on_key_down=self._on_keyboard_down)
@@ -26,8 +25,10 @@ class KDGame(Widget):
 			self.aTower.moveL()
 		if keycode[1] == 'd':
 			self.aTower.moveR()
-			return True	
-	def update(self,dt):
+			return True	"""
+	aTower = ObjectProperty(None)
+
+	def update(self, dt):
 		pass
 	
 
@@ -35,6 +36,8 @@ class Tower(Widget):
     velocity_x = NumericProperty(0)
     velocity_y = NumericProperty(0)
     velocity = ReferenceListProperty(velocity_x, velocity_y)
+    def on_touch_down(self, touch):
+    	self.pos = Vector(*self.velocity) + touch.pos
     def moveU(self):
 		self.pos = Vector(*self.velocity) + self.pos + Vector(0, 10)
     def moveD(self):
