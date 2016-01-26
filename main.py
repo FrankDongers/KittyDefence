@@ -36,18 +36,18 @@ class KDGame(Widget):
 	
 
 class Tower(Widget):
-    velocity_x = NumericProperty(0)
-    velocity_y = NumericProperty(0)
-    velocity = ReferenceListProperty(velocity_x, velocity_y)
-    def on_touch_down(self, touch):
-    	self.pos = Vector(*self.velocity) + touch.pos
-    def moveU(self):
+	velocity_x = NumericProperty(0)
+	velocity_y = NumericProperty(0)
+	velocity = ReferenceListProperty(velocity_x, velocity_y)
+	def on_touch_down(self, touch):
+		self.pos = Vector(*self.velocity) + touch.pos + Vector(-25,-25)
+	def moveU(self):
 		self.pos = Vector(*self.velocity) + self.pos + Vector(0, 10)
-    def moveD(self):
+	def moveD(self):
 		self.pos = Vector(*self.velocity) + self.pos + Vector(0, -10)
-    def moveL(self):
+	def moveL(self):
 		self.pos = Vector(*self.velocity) + self.pos + Vector(-10, 0)
-    def moveR(self):
+	def moveR(self):
 		self.pos = Vector(*self.velocity) + self.pos + Vector(10, 0)
 
 class BuildSpot(Widget):
